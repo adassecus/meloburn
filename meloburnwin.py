@@ -63,12 +63,27 @@ if not check_admin():
     messagebox.showerror("Permissão Negada 🚫", "Por favor, execute o script como administrador!")
     sys.exit(0)
 
+def sanitize_string(s):
+    replacements = {
+        '&': 'e'
+    }
+    invalid_chars = '<>:"/\\|?*'
+    result = ""
+    for ch in s:
+        if ch in replacements:
+            result += replacements[ch]
+        elif ch in invalid_chars:
+            continue
+        else:
+            result += ch
+    return result.strip()
+
 def shorten_text(text, max_length=25):
     return text if len(text) <= max_length else text[:max_length] + "..."
 
 def organize_music(source_folder, output_folder, log_func):
     log_func("💖 Iniciando organização das músicas...")
-    music_dict = {}  
+    music_dict = {}
     unknown_metadata = set()
     abs_output = os.path.abspath(output_folder)
 
@@ -76,7 +91,7 @@ def organize_music(source_folder, output_folder, log_func):
         if os.path.abspath(root_dir).startswith(abs_output):
             continue
         for file in files:
-            if file.lower().endswith(('.mp3', '.wav', '.flac', '.aac')):
+            if file.lower().endswith(('.mp3', '.wav', '.flac', '.aac', '.ogg', '.wma', '.m4a')):
                 file_path = os.path.join(root_dir, file)
                 try:
                     if file.lower().endswith('.mp3'):
@@ -116,6 +131,11 @@ def organize_music(source_folder, output_folder, log_func):
                     artist, title = new_artist, new_title
                 except Exception:
                     artist, title = artist, title
+
+                artist = sanitize_string(artist)
+                album = sanitize_string(album)
+                title = sanitize_string(title)
+
                 artist = shorten_text(artist, 25)
                 title = shorten_text(title, 25)
 
