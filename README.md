@@ -2,10 +2,6 @@
 
 O **Meloburn 0.7** é um aplicativo gráfico desenvolvido em Python para organizar sua biblioteca musical de forma prática e inteligente. Este README.md contém todas as informações necessárias para compreender, configurar e utilizar o programa, sem necessidade de arquivos adicionais.
 
-**Data de lançamento:** 25 de fevereiro de 2025  
-**Autor:** Adassecus  
-**Contato:** [t.me/adassecus](https://t.me/adassecus)
-
 ---
 
 ## Visão Geral
@@ -79,7 +75,7 @@ pip install mutagen requests
 Para que o script possa buscar e corrigir metadados automaticamente:
 - Acesse o site da [TheAudioDB](https://www.theaudiodb.com/) e registre-se para obter sua chave de API.
 - No arquivo `melburnwin.py`, localize as funções `lookup_artist_by_track` e `lookup_track_by_artist`.
-- Substitua o valor padrão `1` na URL pela sua chave de API.  
+- Substitua o valor padrão `2` na URL pela sua chave de API.  
 
   **Exemplo:**
   ```python
@@ -135,42 +131,8 @@ Se preferir, você pode abrir o script sem precisar do Prompt de Comando:
 
 ---
 
-## Contribuição
-
-Contribuições são sempre bem-vindas! Se deseja melhorar o **Meloburn** ou reportar algum bug, siga estes passos:
-1. Faça um fork do repositório.
-2. Crie uma branch para sua feature ou correção:
-   ```bash
-   git checkout -b minha-feature
-   ```
-3. Realize os commits das suas alterações:
-   ```bash
-   git commit -m 'Adiciona nova funcionalidade'
-   ```
-4. Envie sua branch para o fork:
-   ```bash
-   git push origin minha-feature
-   ```
-5. Abra um Pull Request explicando suas mudanças.
-
----
-
-## Licença
-
-Distribuído sob a licença MIT.
-
-```
-MIT License © Adassecus - 2025
-```
-
----
-
 ## Contato
 
 Para dúvidas, sugestões ou problemas, entre em contato:
 
 📩 **[t.me/adassecus](https://t.me/adassecus)**
-
----
-
-Aproveite o **Meloburn 0.7** para organizar suas músicas com elegância e eficiência! 🎶🍯
