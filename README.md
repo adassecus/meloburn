@@ -21,7 +21,7 @@ O **Meloburn 0.7** é um aplicativo gráfico desenvolvido em Python para organiz
 - **Interface Gráfica com Tkinter:** Simples, intuitiva e elegante.
 - **Verificação de Privilégios Administrativos:** Garante que o script seja executado com as permissões necessárias para operações de sistema, como a formatação do pen drive.
 - **Busca de Metadados Opcional:**  
-  Acesse o site da [TheAudioDB](https://www.theaudiodb.com/) para obter sua chave de API. Caso deseje que o script busque automaticamente os metadados, insira sua chave nas funções `lookup_artist_by_track` e `lookup_track_by_artist` no arquivo `melburnwin.py`. Se a chave não for configurada, os metadados não identificados serão definidos como **"Desconhecido"**.
+  Acesse o site da [TheAudioDB](https://www.theaudiodb.com/) para obter sua chave de API. Caso deseje que o script busque automaticamente os metadados, insira sua chave nas funções `lookup_artist_by_track` e `lookup_track_by_artist` no arquivo `meloburnwin.py`. Se a chave não for configurada, os metadados não identificados serão definidos como **"Desconhecido"**.
 - **Monitoramento do Progresso:** Barra de progresso e logs em tempo real durante a cópia dos arquivos.
 - **Exportação de Logs:** Permite salvar o registro das operações para consulta futura.
 
@@ -51,8 +51,8 @@ O **Meloburn 0.7** é um aplicativo gráfico desenvolvido em Python para organiz
 
 ### 1. Obtenha o Arquivo
 
-O script está disponível para download direto como um único arquivo chamado `melburnwin.py` neste mesmo diretório. Para baixar:
-   - Clique no arquivo `melburnwin.py` no repositório.
+O script está disponível para download direto como um único arquivo chamado `meloburnwin.py` neste mesmo diretório. Para baixar:
+   - Clique no arquivo `meloburnwin.py` no repositório.
    - Selecione a opção **Raw** e salve o arquivo (Ctrl+S) em seu computador.
 
 ### 2. (Opcional) Crie um Ambiente Virtual
@@ -74,7 +74,7 @@ pip install mutagen requests
 
 Para que o script possa buscar e corrigir metadados automaticamente:
 - Acesse o site da [TheAudioDB](https://www.theaudiodb.com/) e registre-se para obter sua chave de API.
-- No arquivo `melburnwin.py`, localize as funções `lookup_artist_by_track` e `lookup_track_by_artist`.
+- No arquivo `meloburnwin.py`, localize as funções `lookup_artist_by_track` e `lookup_track_by_artist`.
 - Substitua o valor padrão `2` na URL pela sua chave de API.  
 
   **Exemplo:**
@@ -96,20 +96,20 @@ Para que o script possa buscar e corrigir metadados automaticamente:
 ### Opção 1: Executando sem Linha de Comando
 
 Se preferir, você pode abrir o script sem precisar do Prompt de Comando:
-1. Clique com o botão direito no arquivo `melburnwin.py`.
+1. Clique com o botão direito no arquivo `meloburnwin.py`.
 2. Selecione **Abrir com...** e escolha **Python**.
 3. O programa abrirá a interface gráfica automaticamente.
 
 ### Opção 2: Executando pelo Prompt de Comando
 
 1. Abra o **Prompt de Comando** ou **PowerShell**.
-2. Navegue até o diretório onde o arquivo `melburnwin.py` foi salvo:
+2. Navegue até o diretório onde o arquivo `meloburnwin.py` foi salvo:
    ```bash
    cd caminho\para\o\diretório
    ```
 3. Execute o script:
    ```bash
-   python melburnwin.py
+   python meloburnwin.py
    ```
    Isso abrirá a interface gráfica do Meloburn.
 
