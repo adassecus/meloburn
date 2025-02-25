@@ -93,12 +93,27 @@ Para que o script possa buscar e corrigir metadados automaticamente:
 
 ## Como Utilizar
 
-### Opção 1: Executando sem Linha de Comando
+### Opção 1: Executando sem Linha de Comando com Privilégios Administrativos
 
-Se preferir, você pode abrir o script sem precisar do Prompt de Comando:
-1. Clique com o botão direito no arquivo `meloburnwin.py`.
-2. Selecione **Abrir com...** e escolha **Python**.
-3. O programa abrirá a interface gráfica automaticamente.
+Para garantir que o Meloburn seja executado com as permissões necessárias, siga os passos abaixo:
+
+1. **Criar um Atalho com Privilégios Administrativos:**
+   - Navegue até o arquivo `meloburnwin.py`.
+   - Clique com o botão direito sobre ele e selecione **"Criar atalho"**.
+   - Clique com o botão direito no atalho criado e escolha **"Propriedades"**.
+   - Na aba **"Compatibilidade"**, marque a opção **"Executar este programa como administrador"**.
+   - Clique em **"OK"** para salvar as alterações.
+
+2. **Executar o Script:**
+   - Clique duas vezes no atalho. O Windows solicitará permissão para executar o programa como administrador.
+   - Confirme a solicitação (clique em **"Sim"**) e o Meloburn iniciará com privilégios administrativos, abrindo a interface gráfica automaticamente.
+
+Caso não seja possível criar um atalho, você pode executar o script via Prompt de Comando:
+- Abra o menu Iniciar, digite **"cmd"**, clique com o botão direito em **"Prompt de Comando"** e selecione **"Executar como administrador"**.
+- Navegue até o diretório onde o `meloburnwin.py` está localizado utilizando o comando `cd`.
+- Digite `python meloburnwin.py` e pressione **Enter** para iniciar o programa.
+
+Com esses passos, você garantirá que o Meloburn seja executado com os privilégios necessários para realizar operações do sistema. 😊
 
 ### Opção 2: Executando pelo Prompt de Comando
 
