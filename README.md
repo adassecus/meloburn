@@ -113,20 +113,7 @@ Caso não seja possível criar um atalho, você pode executar o script via Promp
 - Navegue até o diretório onde o `meloburnwin.py` está localizado utilizando o comando `cd`.
 - Digite `python meloburnwin.py` e pressione **Enter** para iniciar o programa.
 
-Com esses passos, você garantirá que o Meloburn seja executado com os privilégios necessários para realizar operações do sistema. 😊
-
-### Opção 2: Executando pelo Prompt de Comando
-
-1. Abra o **Prompt de Comando** ou **PowerShell**.
-2. Navegue até o diretório onde o arquivo `meloburnwin.py` foi salvo:
-   ```bash
-   cd caminho\para\o\diretório
-   ```
-3. Execute o script:
-   ```bash
-   python meloburnwin.py
-   ```
-   Isso abrirá a interface gráfica do Meloburn.
+Com esses passos, você garantirá que o Meloburn seja executado com os privilégios necessários para realizar operações do sistema.
 
 ### Utilizando a Interface Gráfica
 
