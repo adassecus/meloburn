@@ -76,10 +76,15 @@ def sanitize_string(s):
             continue
         else:
             result += ch
-    return result.strip()
+    result = result.strip()
+    while result.endswith('.') or result.endswith(' '):
+        result = result[:-1]
+    if not result:
+        result = "Desconhecido"
+    return result
 
 def shorten_text(text, max_length=25):
-    return text if len(text) <= max_length else text[:max_length] + "..."
+    return text if len(text) <= max_length else text[:max_length]
 
 def organize_music(source_folder, output_folder, log_func):
     log_func("💖 Iniciando organização das músicas...")
@@ -91,7 +96,8 @@ def organize_music(source_folder, output_folder, log_func):
         if os.path.abspath(root_dir).startswith(abs_output):
             continue
         for file in files:
-            if file.lower().endswith(('.mp3', '.wav', '.flac', '.aac', '.ogg', '.wma', '.m4a')):
+            supported_formats = ('.mp3', '.wav', '.flac', '.aac')
+            if file.lower().endswith(supported_formats):
                 file_path = os.path.join(root_dir, file)
                 try:
                     if file.lower().endswith('.mp3'):
@@ -140,6 +146,8 @@ def organize_music(source_folder, output_folder, log_func):
                 title = shorten_text(title, 25)
 
                 music_dict.setdefault(artist, {}).setdefault(album, []).append((file_path, title))
+            else:
+                log_func(f"⚠️ Formato não suportado: {file}")
 
     try:
         for artist, albums in music_dict.items():
@@ -170,8 +178,10 @@ def count_files(folder):
         total += len(files)
     return total
 
-def copy_folder(source, destination, update_progress, log_func, total_files, progress_counter):
+def copy_folder(source, destination, update_progress, log_func, total_files, progress_counter, check_cancel):
     for root_dir, dirs, files in os.walk(source):
+        if check_cancel():
+            raise Exception("Processo cancelado pelo usuário.")
         rel_path = os.path.relpath(root_dir, source)
         dest_dir = os.path.join(destination, rel_path)
         try:
@@ -180,6 +190,8 @@ def copy_folder(source, destination, update_progress, log_func, total_files, pro
         except Exception as e:
             log_func(f"⚠️ Erro ao criar pasta {dest_dir}: {e}")
         for file in files:
+            if check_cancel():
+                raise Exception("Processo cancelado pelo usuário.")
             src_file = os.path.join(root_dir, file)
             dst_file = os.path.join(dest_dir, file)
             try:
@@ -191,7 +203,7 @@ def copy_folder(source, destination, update_progress, log_func, total_files, pro
             progress_counter[0] += 1
             update_progress(progress_counter[0], total_files)
 
-def copy_to_pen_drive(organized_folder, pen_drive_folder, mode, log_func, update_progress):
+def copy_to_pen_drive(organized_folder, pen_drive_folder, mode, log_func, update_progress, check_cancel):
     dest_folder = os.path.join(pen_drive_folder, "Music")
     try:
         if mode == "formatar":
@@ -208,7 +220,7 @@ def copy_to_pen_drive(organized_folder, pen_drive_folder, mode, log_func, update
     total_files = count_files(organized_folder)
     progress_counter = [0]
     try:
-        copy_folder(organized_folder, dest_folder, update_progress, log_func, total_files, progress_counter)
+        copy_folder(organized_folder, dest_folder, update_progress, log_func, total_files, progress_counter, check_cancel)
     except Exception as e:
         log_func(f"⚠️ Erro durante a cópia: {e}")
         return
@@ -335,22 +347,28 @@ class Application(tk.Tk):
         if folder:
             self.pen_drive_folder = folder
             self.lbl_pen.config(text=self.pen_drive_folder)
-    
+    def on_progress_close(self):
+        self.cancel_process = True
+        self.log("🚫 Barra de progresso fechada. Processo cancelado pelo usuário.")
+        self.progress_window.destroy()
+
     def open_progress_window(self):
+        self.cancel_process = False
         self.progress_window = tk.Toplevel(self)
         self.progress_window.title("Progresso da Cópia")
         self.progress_window.geometry("400x150")
         self.progress_window.configure(bg=BG_COLOR)
-        self.progress_window.attributes("-topmost", True)  
+        self.progress_window.attributes("-topmost", True)
+        self.progress_window.protocol("WM_DELETE_WINDOW", self.on_progress_close)
         style = ttk.Style(self.progress_window)
         style.theme_use('clam')
         style.configure("blue.Horizontal.TProgressbar", troughcolor=BG_COLOR, background=BUTTON_COLOR, thickness=20)
         self.prog_bar = ttk.Progressbar(self.progress_window, orient="horizontal", mode="determinate",
-        maximum=100, length=350, style="blue.Horizontal.TProgressbar")
+                                        maximum=100, length=350, style="blue.Horizontal.TProgressbar")
         self.prog_bar.pack(pady=20)
         self.prog_label = tk.Label(self.progress_window, text="0%", bg=BG_COLOR, fg=FG_COLOR, font=("Segoe UI", 10))
         self.prog_label.pack()
-    
+
     def update_progress(self, current, total):
         try:
             percent = (current / total) * 100 if total > 0 else 0
@@ -398,23 +416,31 @@ class Application(tk.Tk):
         try:
             self.log("💖 Processo iniciado...")
             unknown_files = organize_music(self.source_folder, output_folder, self.log)
-        
+            
+            if self.cancel_process:
+                self.log("🚫 Processo cancelado pelo usuário antes de iniciar a cópia.")
+                return
+
             mode = self.operation_mode.get()
             if mode == "formatar":
                 success = format_pen_drive(self.pen_drive_folder, self.log)
                 if not success:
                     self.log("❌ Operação interrompida devido à falha na formatação.")
                     return
-        
-            copy_to_pen_drive(output_folder, self.pen_drive_folder, mode, self.log, self.update_progress)
-        
+            
+            copy_to_pen_drive(output_folder, self.pen_drive_folder, mode, self.log, self.update_progress, lambda: self.cancel_process)
+            
+            if self.cancel_process:
+                self.log("🚫 Processo cancelado pelo usuário.")
+                return
+            
             if mode == "adicionar":
                 rename_pen_drive(self.pen_drive_folder, self.log)
-        
+            
             if unknown_files:
                 unknown_list = ", ".join(unknown_files)
                 self.log(f"⚠️ Atenção: os seguintes arquivos não tiveram metadados identificados automaticamente:\n{unknown_list}")
-        
+            
             self.log("\n🎉 Processo concluído com sucesso! Seu pen drive está pronto para uso. 🍯")
             messagebox.showinfo("Concluído", "Processo concluído com sucesso!")
         except tk.TclError:
