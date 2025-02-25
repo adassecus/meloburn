@@ -17,7 +17,7 @@ BUTTON_COLOR = "#007BFF"
 ENTRY_BG = "#444444"        
 
 def lookup_artist_by_track(track_title):
-    url = f"https://theaudiodb.com/api/v1/json/1/searchtrack.php?t={track_title}"
+    url = f"https://theaudiodb.com/api/v1/json/2/searchtrack.php?t={track_title}"
     try:
         response = requests.get(url, timeout=10)
         if response.status_code == 200:
@@ -29,7 +29,7 @@ def lookup_artist_by_track(track_title):
     return None
 
 def lookup_track_by_artist(artist):
-    url = f"https://theaudiodb.com/api/v1/json/1/searchtrack.php?s={artist}"
+    url = f"https://theaudiodb.com/api/v1/json/2/searchtrack.php?s={artist}"
     try:
         response = requests.get(url, timeout=10)
         if response.status_code == 200:
