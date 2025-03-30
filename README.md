@@ -1,21 +1,21 @@
-# Meloburn - Organizador de Músicas
+# Meloburn - Organizador e Gravador de Músicas
 
-Um assistente para organizar sua coleção de música, otimizado para dispositivos de áudio.
+Um assistente para organizar e gravar sua coleção de música, otimizado para dispositivos de áudio.
 
 ## Visão Geral
 
 - **Organização de Músicas:** Separa os arquivos musicais por artista e álbum.
 - **Renomeação e Numeração de Faixas:** Corrige os metadados e padroniza os nomes dos arquivos, facilitando a navegação em aparelhos de som.
 - **Detecção de Duplicados:** Identifica e remove arquivos duplicados baseando-se no conteúdo e metadados.
-- **Otimização para Pen Drives:** Oferece duas opções de operação:
+- **Gravação Otimizada para Pen Drives:** Oferece duas opções de operação:
   - **Formatar o pen drive:** Apaga todo o conteúdo antes de copiar as músicas.
   - **Adicionar músicas:** Copia novas músicas sem apagar o conteúdo já existente.
 - **Busca de Metadados Online:** Utiliza múltiplas APIs para identificar e corrigir automaticamente artistas, álbuns e títulos.
 
 ## Funcionalidades
 
-- **Interface Gráfica com Tkinter:** Simples, intuitiva e elegante com design moderno.
-- **Verificação de Privilégios Administrativos:** Garante que o script seja executado com as permissões necessárias para operações de sistema, como a formatação do pen drive.
+- **Interface Gráfica:** Simples, intuitiva e elegante com design moderno.
+- **Verificação de Privilégios Administrativos:** Garante a execução com as permissões necessárias para formatação do pen drive.
 - **Fluxo de Trabalho Guiado:** Interface passo a passo que orienta o usuário durante todo o processo.
 - **Busca de Metadados Integrada:** Combina múltiplas fontes para enriquecer seus arquivos de música.
 - **Download de Capas de Álbum:** Busca e baixa automaticamente capas de álbum para cada pasta organizada.
@@ -36,32 +36,13 @@ Um assistente para organizar sua coleção de música, otimizado para dispositiv
 
 ## Instalação
 
-O Meloburn está disponível apenas como um executável para Windows, não requerendo Python nem instalação de dependências.
-
 1. **Baixe o arquivo executável**:
    - Faça o download do arquivo `meloburnwin.exe` 
    - Salve-o em qualquer pasta do seu computador
 
 2. **Execute o programa**:
    - Clique duas vezes no arquivo `meloburnwin.exe` para iniciar o programa
-   - Ao ser solicitado, permita a execução como administrador para as operações de formatação de pen drive
-
-Esta versão executável contém todas as dependências necessárias e funciona em qualquer sistema Windows sem configuração adicional.
-
-### Executando com Privilégios Administrativos
-
-Para garantir o funcionamento completo (especialmente para formatação de dispositivos):
-
-1. **Método Direto:**
-   - Clique com o botão direito em `meloburnwin.exe`
-   - Selecione "Executar como administrador"
-
-2. **Criando um Atalho com Privilégios:**
-   - Clique com o botão direito no arquivo `meloburnwin.exe`
-   - Selecione "Criar atalho"
-   - Clique com o botão direito no atalho criado e escolha "Propriedades"
-   - Na aba "Compatibilidade", marque "Executar este programa como administrador"
-   - Clique em "OK" para salvar
+   - O programa solicitará permissões de administrador necessárias para suas operações
 
 ## Como Utilizar
 
@@ -95,6 +76,6 @@ Para garantir o funcionamento completo (especialmente para formatação de dispo
 
 ## Contato
 
-Para dúvidas, sugestões ou problemas, entre em contato:
+Para dúvidas:
 
 📩 **[t.me/adassecus](https://t.me/adassecus)**
