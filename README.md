@@ -27,13 +27,26 @@
 
 ---
 
-## Requisitos e Dependências
+## Opções de Instalação
 
-### Sistema Operacional
-- **Windows:** Desenvolvido e testado para Windows 10 ou superior.  
-  *Observação:* É necessário executar o script com privilégios de administrador.
+### Opção 1: Versão Executável (Recomendada)
 
-### Softwares e Bibliotecas
+Não requer Python nem instalação de dependências! Basta baixar e executar.
+
+1. **Baixe o arquivo executável**:
+   - Faça o download do arquivo `meloburnwin.exe` deste repositório
+   - Salve-o em qualquer pasta do seu computador
+
+2. **Execute o programa**:
+   - Clique duas vezes no arquivo `meloburnwin.exe` para iniciar o programa
+   - Ao ser solicitado, permita a execução como administrador para as operações de formatação de pen drive
+
+Essa versão executável contém todas as dependências necessárias e funciona em qualquer sistema Windows sem configuração adicional.
+
+### Opção 2: Versão Python (Para desenvolvedores)
+
+#### Requisitos
+
 - **Python 3.x** – [Download Python](https://www.python.org/downloads/)
 - **Tkinter:** Geralmente incluído com o Python em ambientes Windows.
 - **Mutagen:** Para manipulação de metadados de arquivos de áudio.  
@@ -45,32 +58,28 @@
   pip install requests
   ```
 
----
+#### Instalação e Configuração
 
-## Instalação e Configuração
+1. **Obtenha o código-fonte**:
+   - Baixe o arquivo `meloburnwin.py` deste repositório
 
-### 1. Obtenha o Arquivo
+2. **(Opcional) Crie um Ambiente Virtual**:
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate
+   ```
 
-O script principal está disponível como um único arquivo chamado `meloburn.py` neste repositório. Para baixar:
-   - Clique no arquivo `meloburn.py` no repositório.
-   - Selecione a opção **Raw** e salve o arquivo (Ctrl+S) em seu computador.
+3. **Instale as Dependências**:
+   ```bash
+   pip install mutagen requests
+   ```
 
-### 2. (Opcional) Crie um Ambiente Virtual
+4. **Execute o Script**:
+   ```bash
+   python meloburnwin.py
+   ```
 
-Abra o **Prompt de Comando** e execute:
-```bash
-python -m venv venv
-venv\Scripts\activate
-```
-
-### 3. Instale as Dependências
-
-Instale as bibliotecas necessárias com os seguintes comandos:
-```bash
-pip install mutagen requests
-```
-
-### 4. Chaves de API (Opcional)
+### Chaves de API (Opcional)
 
 O programa já vem com chaves de API padrão configuradas para:
 - Last.fm
@@ -79,47 +88,57 @@ O programa já vem com chaves de API padrão configuradas para:
 
 Se você quiser usar suas próprias chaves, você pode editar o código-fonte e substituir os valores no dicionário `API_KEYS` no início do arquivo.
 
-### 5. Permissões Administrativas
-
-**Importante:** Para a formatação do pen drive e outras operações de sistema, o script deve ser executado com privilégios de administrador.  
-- O aplicativo irá solicitar automaticamente privilégios de administrador quando necessário.
-- Se preferir, clique com o botão direito no **Prompt de Comando** e selecione "Executar como administrador" antes de iniciar o script.
-
 ---
 
 ## Como Utilizar
 
-### Opção 1: Executando com Interface Gráfica
+### Navegação pela Interface
 
-1. **Iniciar o Programa:**
-   - Clique duas vezes no arquivo `meloburn.py` ou execute-o via linha de comando
-   - Se necessário, confirme a solicitação de privilégios administrativos
+1. **Tela de Boas-vindas:** 
+   - Clique em "Iniciar" para começar o processo
 
-2. **Navegação pela Interface:**
-   - **Tela de Boas-vindas:** Clique em "Iniciar" para começar o processo
-   - **Etapa 1:** Selecione a pasta de origem que contém seus arquivos de música
-   - **Etapa 2:** Selecione o pen drive ou dispositivo de destino
-   - **Etapa 3:** Escolha o modo de operação (formatar ou adicionar) e defina um nome para o dispositivo
-   - **Resumo:** Verifique as opções selecionadas e clique em "Iniciar Processo"
+2. **Etapa 1 - Selecione a Pasta de Origem:** 
+   - Escolha a pasta que contém seus arquivos de música
+   - O programa analisará recursivamente todas as subpastas
 
-3. **Durante o Processo:**
-   - Aguarde enquanto o aplicativo analisa, organiza e copia seus arquivos
-   - A janela de progresso mostrará informações detalhadas sobre cada etapa
-   - Você pode cancelar o processo a qualquer momento clicando no botão "Cancelar"
+3. **Etapa 2 - Selecione o Pen Drive:** 
+   - Escolha o dispositivo onde as músicas serão organizadas
+   - Tenha cuidado ao selecionar o destino correto
 
-### Opção 2: Criando um Atalho com Privilégios Administrativos
+4. **Etapa 3 - Configurações:** 
+   - Escolha o modo de operação:
+     - **Formatar o pen drive:** Apaga todo conteúdo existente
+     - **Adicionar músicas:** Mantém o conteúdo existente
+   - Defina um nome personalizado para o dispositivo
 
-Para garantir que o Meloburn seja sempre executado com as permissões necessárias:
+5. **Resumo da Operação:** 
+   - Verifique todas as opções selecionadas
+   - Clique em "Iniciar Processo" para começar
 
-1. **Criar um Atalho:**
-   - Navegue até o arquivo `meloburn.py`
-   - Clique com o botão direito sobre ele e selecione **"Criar atalho"**
-   - Clique com o botão direito no atalho criado e escolha **"Propriedades"**
-   - Na aba **"Compatibilidade"**, marque a opção **"Executar este programa como administrador"**
-   - Clique em **"OK"** para salvar as alterações
+6. **Durante o Processo:**
+   - Acompanhe o progresso pela barra de progresso
+   - Visualize detalhes sobre a etapa atual
+   - Você pode cancelar a operação a qualquer momento
 
-2. **Executar via Atalho:**
-   - Basta clicar duas vezes no atalho para iniciar o programa com privilégios administrativos
+### Executando com Privilégios Administrativos
+
+Para garantir o funcionamento completo (especialmente para formatação de dispositivos):
+
+1. **Usando o Executável (.exe):**
+   - Clique com o botão direito em `meloburnwin.exe`
+   - Selecione "Executar como administrador"
+
+2. **Usando a Versão Python:**
+   - Execute o Prompt de Comando como administrador
+   - Navegue até a pasta do script
+   - Execute: `python meloburnwin.py`
+
+3. **Criando um Atalho com Privilégios:**
+   - Clique com o botão direito no arquivo (exe ou py)
+   - Selecione "Criar atalho"
+   - Clique com o botão direito no atalho criado e escolha "Propriedades"
+   - Na aba "Compatibilidade", marque "Executar este programa como administrador"
+   - Clique em "OK" para salvar
 
 ---
 
