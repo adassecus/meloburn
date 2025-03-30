@@ -1,5 +1,3 @@
-# Meloburn 0.7 🍯🎶
-
 ## Visão Geral
 
 - **Organização de Músicas:** Separa os arquivos musicais por artista e álbum.
