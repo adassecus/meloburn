@@ -125,26 +125,6 @@ Se você quiser usar suas próprias chaves, você pode editar o código-fonte e 
    - Acompanhe o progresso pela barra de progresso
    - Você pode cancelar a operação a qualquer momento
 
-### Executando com Privilégios Administrativos
-
-Para garantir o funcionamento completo (especialmente para formatação de dispositivos):
-
-1. **Usando o Executável (.exe):**
-   - Clique com o botão direito em `meloburnwin.exe`
-   - Selecione "Executar como administrador"
-
-2. **Usando a Versão Python:**
-   - Execute o Prompt de Comando como administrador
-   - Navegue até a pasta do script
-   - Execute: `python meloburnwin.py`
-
-3. **Criando um Atalho com Privilégios:**
-   - Clique com o botão direito no arquivo (exe ou py)
-   - Selecione "Criar atalho"
-   - Clique com o botão direito no atalho criado e escolha "Propriedades"
-   - Na aba "Compatibilidade", marque "Executar este programa como administrador"
-   - Clique em "OK" para salvar
-
 ## Contato
 
 Para dúvidas, sugestões ou problemas, entre em contato:
