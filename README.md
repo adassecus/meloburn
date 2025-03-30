@@ -1,31 +1,38 @@
+# Meloburn - Organizador de Músicas
+
+Um assistente para organizar sua coleção de música, otimizado para dispositivos de áudio.
+
 ## Visão Geral
 
 - **Organização de Músicas:** Separa os arquivos musicais por artista e álbum.
 - **Renomeação e Numeração de Faixas:** Corrige os metadados e padroniza os nomes dos arquivos, facilitando a navegação em aparelhos de som.
+- **Detecção de Duplicados:** Identifica e remove arquivos duplicados baseando-se no conteúdo e metadados.
 - **Otimização para Pen Drives:** Oferece duas opções de operação:
   - **Formatar o pen drive:** Apaga todo o conteúdo antes de copiar as músicas.
   - **Adicionar músicas:** Copia novas músicas sem apagar o conteúdo já existente.
-- **Exibição de Progresso Detalhado:** Acompanha todo o processo com barra de progresso interativa.
-- **Busca de Metadados Online:** Utiliza múltiplas APIs (Last.fm, MusicBrainz, Discogs, TheAudioDB) para identificar e corrigir automaticamente artistas, álbuns e títulos.
-
----
+- **Busca de Metadados Online:** Utiliza múltiplas APIs para identificar e corrigir automaticamente artistas, álbuns e títulos.
 
 ## Funcionalidades
 
 - **Interface Gráfica com Tkinter:** Simples, intuitiva e elegante com design moderno.
 - **Verificação de Privilégios Administrativos:** Garante que o script seja executado com as permissões necessárias para operações de sistema, como a formatação do pen drive.
 - **Fluxo de Trabalho Guiado:** Interface passo a passo que orienta o usuário durante todo o processo.
-- **Busca de Metadados Integrada:** Combina múltiplas fontes para enriquecer seus arquivos de música:
-  - Last.fm: Para informações detalhadas sobre artistas e músicas
-  - MusicBrainz: Para metadados precisos de álbuns e faixas
-  - Discogs: Para capas de álbum e informações adicionais
-  - TheAudioDB: Como fonte adicional de informações
+- **Busca de Metadados Integrada:** Combina múltiplas fontes para enriquecer seus arquivos de música.
 - **Download de Capas de Álbum:** Busca e baixa automaticamente capas de álbum para cada pasta organizada.
+- **Limpeza de Títulos:** Remove informações desnecessárias dos nomes de faixas, como "(Official Video)", "HD", etc.
+- **Análise de Qualidade:** Seleciona a melhor versão de arquivos duplicados com base no formato, bitrate e metadados.
 - **Detecção de Idioma:** Identifica o idioma das músicas para melhor organização.
-- **Monitoramento do Progresso:** Barra de progresso detalhada durante o processamento e cópia dos arquivos.
 - **Renomeação de Pen Drive:** Permite definir um nome personalizado para o dispositivo.
 
----
+## Formatos Suportados
+
+- MP3
+- FLAC
+- WAV
+- AAC
+- OGG
+- M4A
+- WMA
 
 ## Opções de Instalação
 
@@ -88,8 +95,6 @@ O programa já vem com chaves de API padrão configuradas para:
 
 Se você quiser usar suas próprias chaves, você pode editar o código-fonte e substituir os valores no dicionário `API_KEYS` no início do arquivo.
 
----
-
 ## Como Utilizar
 
 ### Navegação pela Interface
@@ -109,6 +114,7 @@ Se você quiser usar suas próprias chaves, você pode editar o código-fonte e 
    - Escolha o modo de operação:
      - **Formatar o pen drive:** Apaga todo conteúdo existente
      - **Adicionar músicas:** Mantém o conteúdo existente
+   - Opção para detectar e remover arquivos duplicados
    - Defina um nome personalizado para o dispositivo
 
 5. **Resumo da Operação:** 
@@ -139,18 +145,6 @@ Para garantir o funcionamento completo (especialmente para formatação de dispo
    - Clique com o botão direito no atalho criado e escolha "Propriedades"
    - Na aba "Compatibilidade", marque "Executar este programa como administrador"
    - Clique em "OK" para salvar
-
----
-
-## Recursos Técnicos Adicionais
-
-- **Cache de Metadados:** O programa salva um cache de pesquisas anteriores para melhorar o desempenho.
-- **Processamento Multi-fonte:** Combina dados de várias APIs para resultados mais precisos.
-- **Detecção de Idioma:** Algoritmo básico para identificar o idioma com base em palavras comuns.
-- **Sanitização de Nomes de Arquivo:** Garante nomes de arquivo compatíveis com sistemas de arquivos.
-- **Manipulação de Vários Formatos:** Suporta MP3, FLAC, WAV, AAC, OGG, M4A e WMA.
-
----
 
 ## Contato
 
