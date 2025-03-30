@@ -41,7 +41,7 @@ Um assistente para organizar sua coleção de música, otimizado para dispositiv
 Não requer Python nem instalação de dependências! Basta baixar e executar.
 
 1. **Baixe o arquivo executável**:
-   - Faça o download do arquivo `meloburnwin.exe` deste repositório
+   - Faça o download do arquivo `meloburnwin.exe` 
    - Salve-o em qualquer pasta do seu computador
 
 2. **Execute o programa**:
@@ -68,7 +68,7 @@ Essa versão executável contém todas as dependências necessárias e funciona 
 #### Instalação e Configuração
 
 1. **Obtenha o código-fonte**:
-   - Baixe o arquivo `meloburnwin.py` deste repositório
+   - Baixe o arquivo `meloburnwin.py` 
 
 2. **(Opcional) Crie um Ambiente Virtual**:
    ```bash
@@ -123,7 +123,6 @@ Se você quiser usar suas próprias chaves, você pode editar o código-fonte e 
 
 6. **Durante o Processo:**
    - Acompanhe o progresso pela barra de progresso
-   - Visualize detalhes sobre a etapa atual
    - Você pode cancelar a operação a qualquer momento
 
 ### Executando com Privilégios Administrativos
