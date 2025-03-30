@@ -14,7 +14,7 @@ Um assistente para organizar e gravar sua coleção de música, otimizado para d
 
 ## Funcionalidades
 
-- **Interface Gráfica:** Simples, intuitiva e elegante com design moderno.
+- **Interface Gráfica:** Simples, intuitiva e elegante.
 - **Verificação de Privilégios Administrativos:** Garante a execução com as permissões necessárias para formatação do pen drive.
 - **Fluxo de Trabalho Guiado:** Interface passo a passo que orienta o usuário durante todo o processo.
 - **Busca de Metadados Integrada:** Combina múltiplas fontes para enriquecer seus arquivos de música.
