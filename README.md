@@ -1,9 +1,5 @@
 # Meloburn 0.7 🍯🎶
 
-O **Meloburn 0.7** é um aplicativo gráfico desenvolvido em Python para organizar sua biblioteca musical de forma prática e inteligente. Este README.md contém todas as informações necessárias para compreender, configurar e utilizar o programa, sem necessidade de arquivos adicionais.
-
----
-
 ## Visão Geral
 
 - **Organização de Músicas:** Separa os arquivos musicais por artista e álbum.
