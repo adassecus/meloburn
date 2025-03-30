@@ -9,21 +9,27 @@ O **Meloburn 0.7** é um aplicativo gráfico desenvolvido em Python para organiz
 - **Organização de Músicas:** Separa os arquivos musicais por artista e álbum.
 - **Renomeação e Numeração de Faixas:** Corrige os metadados e padroniza os nomes dos arquivos, facilitando a navegação em aparelhos de som.
 - **Otimização para Pen Drives:** Oferece duas opções de operação:
-  - **Formatar o pen drive (🔥):** Apaga todo o conteúdo antes de copiar as músicas.
-  - **Adicionar músicas (➕):** Copia novas músicas sem apagar o conteúdo já existente.
-- **Exibição de Logs Detalhados:** Acompanha todo o processo com mensagens interativas.
-- **Busca de Metadados (Opcional):** Utiliza a API do [TheAudioDB](https://www.theaudiodb.com/) para identificar automaticamente artistas e títulos. Se a API não for configurada, os metadados não identificados serão marcados como **"Desconhecido"**.
+  - **Formatar o pen drive:** Apaga todo o conteúdo antes de copiar as músicas.
+  - **Adicionar músicas:** Copia novas músicas sem apagar o conteúdo já existente.
+- **Exibição de Progresso Detalhado:** Acompanha todo o processo com barra de progresso interativa.
+- **Busca de Metadados Online:** Utiliza múltiplas APIs (Last.fm, MusicBrainz, Discogs, TheAudioDB) para identificar e corrigir automaticamente artistas, álbuns e títulos.
 
 ---
 
 ## Funcionalidades
 
-- **Interface Gráfica com Tkinter:** Simples, intuitiva e elegante.
+- **Interface Gráfica com Tkinter:** Simples, intuitiva e elegante com design moderno.
 - **Verificação de Privilégios Administrativos:** Garante que o script seja executado com as permissões necessárias para operações de sistema, como a formatação do pen drive.
-- **Busca de Metadados Opcional:**  
-  Acesse o site da [TheAudioDB](https://www.theaudiodb.com/) para obter sua chave de API. Caso deseje que o script busque automaticamente os metadados, insira sua chave nas funções `lookup_artist_by_track` e `lookup_track_by_artist` no arquivo `meloburnwin.py`. Se a chave não for configurada, os metadados não identificados serão definidos como **"Desconhecido"**.
-- **Monitoramento do Progresso:** Barra de progresso e logs em tempo real durante a cópia dos arquivos.
-- **Exportação de Logs:** Permite salvar o registro das operações para consulta futura.
+- **Fluxo de Trabalho Guiado:** Interface passo a passo que orienta o usuário durante todo o processo.
+- **Busca de Metadados Integrada:** Combina múltiplas fontes para enriquecer seus arquivos de música:
+  - Last.fm: Para informações detalhadas sobre artistas e músicas
+  - MusicBrainz: Para metadados precisos de álbuns e faixas
+  - Discogs: Para capas de álbum e informações adicionais
+  - TheAudioDB: Como fonte adicional de informações
+- **Download de Capas de Álbum:** Busca e baixa automaticamente capas de álbum para cada pasta organizada.
+- **Detecção de Idioma:** Identifica o idioma das músicas para melhor organização.
+- **Monitoramento do Progresso:** Barra de progresso detalhada durante o processamento e cópia dos arquivos.
+- **Renomeação de Pen Drive:** Permite definir um nome personalizado para o dispositivo.
 
 ---
 
@@ -36,11 +42,11 @@ O **Meloburn 0.7** é um aplicativo gráfico desenvolvido em Python para organiz
 ### Softwares e Bibliotecas
 - **Python 3.x** – [Download Python](https://www.python.org/downloads/)
 - **Tkinter:** Geralmente incluído com o Python em ambientes Windows.
-- **Mutagen:** Para manipulação de metadados.  
+- **Mutagen:** Para manipulação de metadados de arquivos de áudio.  
   ```bash
   pip install mutagen
   ```
-- **Requests:** Para realizar requisições HTTP.  
+- **Requests:** Para realizar requisições às APIs de metadados.  
   ```bash
   pip install requests
   ```
@@ -51,8 +57,8 @@ O **Meloburn 0.7** é um aplicativo gráfico desenvolvido em Python para organiz
 
 ### 1. Obtenha o Arquivo
 
-O script está disponível para download direto como um único arquivo chamado `meloburnwin.py` neste mesmo diretório. Para baixar:
-   - Clique no arquivo `meloburnwin.py` no repositório.
+O script principal está disponível como um único arquivo chamado `meloburn.py` neste repositório. Para baixar:
+   - Clique no arquivo `meloburn.py` no repositório.
    - Selecione a opção **Raw** e salve o arquivo (Ctrl+S) em seu computador.
 
 ### 2. (Opcional) Crie um Ambiente Virtual
@@ -70,66 +76,66 @@ Instale as bibliotecas necessárias com os seguintes comandos:
 pip install mutagen requests
 ```
 
-### 4. Configuração da API (Opcional)
+### 4. Chaves de API (Opcional)
 
-Para que o script possa buscar e corrigir metadados automaticamente:
-- Acesse o site da [TheAudioDB](https://www.theaudiodb.com/) e registre-se para obter sua chave de API.
-- No arquivo `meloburnwin.py`, localize as funções `lookup_artist_by_track` e `lookup_track_by_artist`.
-- Substitua o valor padrão `2` na URL pela sua chave de API.  
+O programa já vem com chaves de API padrão configuradas para:
+- Last.fm
+- Discogs
+- MusicBrainz
 
-  **Exemplo:**
-  ```python
-  API_KEY = "SUA_CHAVE_AQUI"
-  url = f"https://theaudiodb.com/api/v1/json/{API_KEY}/searchtrack.php?t={track_title}"
-  ```
-- Se a chave não for configurada, os metadados não identificados serão definidos como **"Desconhecido"**.
+Se você quiser usar suas próprias chaves, você pode editar o código-fonte e substituir os valores no dicionário `API_KEYS` no início do arquivo.
 
 ### 5. Permissões Administrativas
 
 **Importante:** Para a formatação do pen drive e outras operações de sistema, o script deve ser executado com privilégios de administrador.  
-- Clique com o botão direito no **Prompt de Comando** e selecione “Executar como administrador” antes de iniciar o script.
+- O aplicativo irá solicitar automaticamente privilégios de administrador quando necessário.
+- Se preferir, clique com o botão direito no **Prompt de Comando** e selecione "Executar como administrador" antes de iniciar o script.
 
 ---
 
 ## Como Utilizar
 
-### Opção 1: Executando sem Linha de Comando com Privilégios Administrativos
+### Opção 1: Executando com Interface Gráfica
 
-Para garantir que o Meloburn seja executado com as permissões necessárias, siga os passos abaixo:
+1. **Iniciar o Programa:**
+   - Clique duas vezes no arquivo `meloburn.py` ou execute-o via linha de comando
+   - Se necessário, confirme a solicitação de privilégios administrativos
 
-1. **Criar um Atalho com Privilégios Administrativos:**
-   - Navegue até o arquivo `meloburnwin.py`.
-   - Clique com o botão direito sobre ele e selecione **"Criar atalho"**.
-   - Clique com o botão direito no atalho criado e escolha **"Propriedades"**.
-   - Na aba **"Compatibilidade"**, marque a opção **"Executar este programa como administrador"**.
-   - Clique em **"OK"** para salvar as alterações.
+2. **Navegação pela Interface:**
+   - **Tela de Boas-vindas:** Clique em "Iniciar" para começar o processo
+   - **Etapa 1:** Selecione a pasta de origem que contém seus arquivos de música
+   - **Etapa 2:** Selecione o pen drive ou dispositivo de destino
+   - **Etapa 3:** Escolha o modo de operação (formatar ou adicionar) e defina um nome para o dispositivo
+   - **Resumo:** Verifique as opções selecionadas e clique em "Iniciar Processo"
 
-2. **Executar o Script:**
-   - Clique duas vezes no atalho. O Windows solicitará permissão para executar o programa como administrador.
-   - Confirme a solicitação (clique em **"Sim"**) e o Meloburn iniciará com privilégios administrativos, abrindo a interface gráfica automaticamente.
+3. **Durante o Processo:**
+   - Aguarde enquanto o aplicativo analisa, organiza e copia seus arquivos
+   - A janela de progresso mostrará informações detalhadas sobre cada etapa
+   - Você pode cancelar o processo a qualquer momento clicando no botão "Cancelar"
 
-Caso não seja possível criar um atalho, você pode executar o script via Prompt de Comando:
-- Abra o menu Iniciar, digite **"cmd"**, clique com o botão direito em **"Prompt de Comando"** e selecione **"Executar como administrador"**.
-- Navegue até o diretório onde o `meloburnwin.py` está localizado utilizando o comando `cd`.
-- Digite `python meloburnwin.py` e pressione **Enter** para iniciar o programa.
+### Opção 2: Criando um Atalho com Privilégios Administrativos
 
-Com esses passos, você garantirá que o Meloburn seja executado com os privilégios necessários para realizar operações do sistema.
+Para garantir que o Meloburn seja sempre executado com as permissões necessárias:
 
-### Utilizando a Interface Gráfica
+1. **Criar um Atalho:**
+   - Navegue até o arquivo `meloburn.py`
+   - Clique com o botão direito sobre ele e selecione **"Criar atalho"**
+   - Clique com o botão direito no atalho criado e escolha **"Propriedades"**
+   - Na aba **"Compatibilidade"**, marque a opção **"Executar este programa como administrador"**
+   - Clique em **"OK"** para salvar as alterações
 
-- **Seleção de Pastas:**
-  - **Pasta com as músicas:** Selecione a pasta raiz que contém todos os seus arquivos musicais (mesmo que distribuídos em subpastas).
-  - **Pen drive:** Escolha a unidade correspondente ao seu pen drive.
-  
-- **Opções de Operação:**
-  - **Formatar pen drive (🔥):** Apaga todo o conteúdo do pen drive antes de copiar as músicas.
-  - **Adicionar músicas (➕):** Copia novas músicas sem apagar o conteúdo já existente.
-  
-- **Iniciar o Processo:**
-  - Clique em **"Iniciar Organização 🚀"** e acompanhe o progresso através da barra e dos logs exibidos.
-  
-- **Exportar Logs:**
-  - Ao término do processo, utilize o botão **"Exportar Log 📄"** para salvar o registro das operações.
+2. **Executar via Atalho:**
+   - Basta clicar duas vezes no atalho para iniciar o programa com privilégios administrativos
+
+---
+
+## Recursos Técnicos Adicionais
+
+- **Cache de Metadados:** O programa salva um cache de pesquisas anteriores para melhorar o desempenho.
+- **Processamento Multi-fonte:** Combina dados de várias APIs para resultados mais precisos.
+- **Detecção de Idioma:** Algoritmo básico para identificar o idioma com base em palavras comuns.
+- **Sanitização de Nomes de Arquivo:** Garante nomes de arquivo compatíveis com sistemas de arquivos.
+- **Manipulação de Vários Formatos:** Suporta MP3, FLAC, WAV, AAC, OGG, M4A e WMA.
 
 ---
 
