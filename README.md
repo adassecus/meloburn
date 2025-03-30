@@ -34,11 +34,9 @@ Um assistente para organizar sua coleção de música, otimizado para dispositiv
 - M4A
 - WMA
 
-## Opções de Instalação
+## Instalação
 
-### Opção 1: Versão Executável (Recomendada)
-
-Não requer Python nem instalação de dependências! Basta baixar e executar.
+O Meloburn está disponível apenas como um executável para Windows, não requerendo Python nem instalação de dependências.
 
 1. **Baixe o arquivo executável**:
    - Faça o download do arquivo `meloburnwin.exe` 
@@ -48,52 +46,22 @@ Não requer Python nem instalação de dependências! Basta baixar e executar.
    - Clique duas vezes no arquivo `meloburnwin.exe` para iniciar o programa
    - Ao ser solicitado, permita a execução como administrador para as operações de formatação de pen drive
 
-Essa versão executável contém todas as dependências necessárias e funciona em qualquer sistema Windows sem configuração adicional.
+Esta versão executável contém todas as dependências necessárias e funciona em qualquer sistema Windows sem configuração adicional.
 
-### Opção 2: Versão Python (Para desenvolvedores)
+### Executando com Privilégios Administrativos
 
-#### Requisitos
+Para garantir o funcionamento completo (especialmente para formatação de dispositivos):
 
-- **Python 3.x** – [Download Python](https://www.python.org/downloads/)
-- **Tkinter:** Geralmente incluído com o Python em ambientes Windows.
-- **Mutagen:** Para manipulação de metadados de arquivos de áudio.  
-  ```bash
-  pip install mutagen
-  ```
-- **Requests:** Para realizar requisições às APIs de metadados.  
-  ```bash
-  pip install requests
-  ```
+1. **Método Direto:**
+   - Clique com o botão direito em `meloburnwin.exe`
+   - Selecione "Executar como administrador"
 
-#### Instalação e Configuração
-
-1. **Obtenha o código-fonte**:
-   - Baixe o arquivo `meloburnwin.py` 
-
-2. **(Opcional) Crie um Ambiente Virtual**:
-   ```bash
-   python -m venv venv
-   venv\Scripts\activate
-   ```
-
-3. **Instale as Dependências**:
-   ```bash
-   pip install mutagen requests
-   ```
-
-4. **Execute o Script**:
-   ```bash
-   python meloburnwin.py
-   ```
-
-### Chaves de API (Opcional)
-
-O programa já vem com chaves de API padrão configuradas para:
-- Last.fm
-- Discogs
-- MusicBrainz
-
-Se você quiser usar suas próprias chaves, você pode editar o código-fonte e substituir os valores no dicionário `API_KEYS` no início do arquivo.
+2. **Criando um Atalho com Privilégios:**
+   - Clique com o botão direito no arquivo `meloburnwin.exe`
+   - Selecione "Criar atalho"
+   - Clique com o botão direito no atalho criado e escolha "Propriedades"
+   - Na aba "Compatibilidade", marque "Executar este programa como administrador"
+   - Clique em "OK" para salvar
 
 ## Como Utilizar
 
